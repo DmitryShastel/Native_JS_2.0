@@ -1,5 +1,5 @@
 import React from 'react';
-import {addPostData, getUserData} from "./api";
+import {addUserData, deleteUserData, getUserData, updateUserData} from "./api";
 
 export const AppRoot = () => {
 
@@ -13,18 +13,32 @@ export const AppRoot = () => {
         return getUserData()
     }
 
-    let addPostDataHandler = () => {
-        return addPostData()
+    let addUserDataHandler = () => {
+        return addUserData()
+    }
+
+    let updateUserDataHandler = () => {
+        return updateUserData()
+    }
+    let deleteUserDataHandler = () => {
+        return deleteUserData()
     }
 
 
     return (
         <div>
+            <span><input /></span>
             <div>
                 <button onClick={getUserDataHandler}>get user data</button>
             </div>
             <div>
-                <button onClick={addPostDataHandler}>add post data</button>
+                <button onClick={addUserDataHandler}>add user data</button>
+            </div>
+            <div>
+                <button onClick={updateUserDataHandler}>update user data</button>
+            </div>
+            <div>
+                <button onClick={deleteUserDataHandler}>delete user data</button>
             </div>
         </div>
 

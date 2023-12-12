@@ -1,31 +1,36 @@
 import axios from 'axios';
 
-
 const FIRST_API_URL = 'https://jsonplaceholder.typicode.com';
-const SECOND_API_URL = 'https://fakeapi.com'
-
-// export const getData = async () => {
-//     try {
-//         axios({
-//             url: `${FIRST_API_URL}/users/`,
-//             method: 'get'
-//         })
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 export const getUserData = async () => {
     try {
         const userData = await axios.get(`${FIRST_API_URL}/users`);
         console.log(userData.data);
+        console.log(userData.status);
     } catch (error) {
         console.log(error)
     }
 }
 
-export const addPostData = async () => {
-    const dataPost = await axios.post(`${FIRST_API_URL}/posts`, {title: 'test', body: 'test'})
-    console.log(dataPost.data);
-    console.log(dataPost.status);
+export const addUserData = async () => {
+    const dataUser = await axios.post(`${FIRST_API_URL}/users`, {
+        name: "test name",
+        username: "test username",
+        email: "test@april.biz",
+    })
+    console.log(dataUser.data);
+    console.log(dataUser.status);
+}
+
+export const updateUserData = async () => {
+    const updateDataPost = await axios.put(`${FIRST_API_URL}/users/1`,
+        {name: "test name88"})
+    console.log(updateDataPost.data);
+    console.log(updateDataPost.status);
+}
+
+export const deleteUserData = async () => {
+    const updateDataPost = await axios.delete(`${FIRST_API_URL}/users/1`)
+    console.log(updateDataPost.data);
+    console.log(updateDataPost.status);
 }
