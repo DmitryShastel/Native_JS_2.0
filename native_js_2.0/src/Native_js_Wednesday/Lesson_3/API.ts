@@ -8,7 +8,13 @@ const axiosInstance = axios.create(configOMB);
 
 export  const API = {
     searchFilmsByTitle: (title: string) => {
+        axios.get(configOMB.baseURL)
+            .then(() => {})
+        console.log(title)
     },
     searchFilmsByType: (title: string, type: string) => {
     }
 };
+
+
+//get post put delete
