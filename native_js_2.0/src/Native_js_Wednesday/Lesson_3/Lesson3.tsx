@@ -10,18 +10,30 @@ export const Lesson3 = () => {
     const [serachResultByType, setSerachResultByType] = useState('');
 
     useEffect(() => {
-      
+
     }, [])
 
 
+    // const searchFilm = () => {
+    //     API.searchFilmsByTitle(searchName)
+    //         .then((data) => {
+    //             setSerachResult(JSON.stringify(data));
+    //         })
+    //         .catch((error) => {
+    //             setSerachResult(error.data.Error);
+    //         });
+    // };
+
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
-            .then((data) => {
-                setSerachResult(JSON.stringify(data));
+            .then(res => {
+                console.log(res)
+                if(res.data.Responce === 'True') {
+                    setSerachResult(JSON.stringify(res.data.Search))
+                } else {
+                    setSerachResult(res.data.Error)
+                }
             })
-            .catch((error) => {
-                setSerachResult('Error occurred.');
-            });
     };
 
 
