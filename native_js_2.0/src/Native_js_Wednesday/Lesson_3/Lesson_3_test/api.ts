@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const FIRST_API_URL = 'https://jsonplaceholder.typicode.com';
 
-export const getUserData = async () => {
+export const getUserAllData = async () => {
     try {
         const userData = await axios.get(`${FIRST_API_URL}/users`);
         console.log(userData.data);
@@ -33,4 +33,13 @@ export const deleteUserData = async () => {
     const updateDataPost = await axios.delete(`${FIRST_API_URL}/users/1`)
     console.log(updateDataPost.data);
     console.log(updateDataPost.status);
+}
+
+export const getUserDataById = async (id: string) => {
+    try {
+        const userData = await axios.get(`${FIRST_API_URL}/users/${id}`);
+        console.log(userData.data);
+    }catch (error) {
+        console.log(error)
+    }
 }

@@ -1,22 +1,16 @@
-import React from 'react';
-import {addUserData, deleteUserData, getUserData, updateUserData} from "./api";
+import React, {useState} from 'react';
+import {addUserData, deleteUserData, getUserAllData, getUserDataById, updateUserData} from "./api";
 
 export const AppRoot = () => {
 
-    // useEffect(() => {
-    //     getPosts
-    //         .then(res => console.log(res))
-    //         .catch(err => console.log(err))
-    // })
+    const [id, setId] = useState('')
 
     let getUserDataHandler = () => {
-        return getUserData()
+        return getUserAllData()
     }
-
     let addUserDataHandler = () => {
         return addUserData()
     }
-
     let updateUserDataHandler = () => {
         return updateUserData()
     }
@@ -24,12 +18,30 @@ export const AppRoot = () => {
         return deleteUserData()
     }
 
+   let getUserDataByIdHandler = () => {
+        if(id) {
+            return getUserDataById(id)
+        } else {
+            console.warn('Please enter an ID')
+        }
+   }
+
+    let searchUser = () => {
+        getUserDataByIdHandler()
+    }
 
     return (
         <div>
-            <span><input /></span>
+            <span>
+                <input
+                    type='number'
+                    onChange={(e) => setId(e.currentTarget.value)}/>
+            </span>
             <div>
-                <button onClick={getUserDataHandler}>get user data</button>
+                <button onClick={searchUser}>get user data</button>
+            </div>
+            <div>
+                <button onClick={getUserDataHandler}>get all users data</button>
             </div>
             <div>
                 <button onClick={addUserDataHandler}>add user data</button>
