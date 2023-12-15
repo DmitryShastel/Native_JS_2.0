@@ -17,3 +17,18 @@ export const API = {
         return axiosInstance.get(query);
     },
 };
+
+
+const configJSON = {
+    baseURL: 'https://jsonplaceholder.typicode.com',
+}
+
+const axiosIn = axios.create(configJSON)
+console.log(axiosIn.get(`/posts`))
+
+
+
+
+
+// const baseURL = 'https://jsonplaceholder.typicode.com'
+// console.log(axios.get(`${baseURL}/posts/1`))
