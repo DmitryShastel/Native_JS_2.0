@@ -30,6 +30,11 @@ console.log(axiosIn.post(`/posts`, {
     body: 'test',
     userId: 1,
 }))
+console.log(axiosIn.put(`/posts/2`, {
+    title: 'test2',
+    body: 'test2',
+    userId: 1,
+}))
 
 
 
