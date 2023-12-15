@@ -1,36 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {API} from './API';
 
 export const Lesson3 = () => {
-
 
     const [searchName, setSearchName] = useState('');
     const [serachResult, setSerachResult] = useState('');
     const [searchNameByType, setSearchNameByType] = useState('');
     const [serachResultByType, setSerachResultByType] = useState('');
 
-    useEffect(() => {
-
-    }, [])
-
-
-    // const searchFilm = () => {
-    //     API.searchFilmsByTitle(searchName)
-    //         .then((data) => {
-    //             setSerachResult(JSON.stringify(data));
-    //         })
-    //         .catch((error) => {
-    //             setSerachResult(error.data.Error);
-    //         });
-    // };
 
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
             .then(res => {
                 console.log(res)
-                if(res.data.Responce === 'True') {
+                if (res.data.Response === 'True') {
                     setSerachResult(JSON.stringify(res.data.Search))
                 } else {
+                    console.log(res.data)
                     setSerachResult(res.data.Error)
                 }
             })
@@ -40,12 +26,14 @@ export const Lesson3 = () => {
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
         API.searchFilmsByType(searchNameByType, type)
-            .then((data) => {
-                setSerachResultByType(JSON.stringify(data));
+            .then(res => {
+                console.log(res)
+                if (res.data.Response === 'True') {
+                    setSerachResultByType(JSON.stringify(res.data.Search))
+                } else {
+                    setSerachResultByType(res.data.Error)
+                }
             })
-            .catch((error) => {
-                setSerachResultByType('Error occurred.');
-            });
     }
 
     return (
