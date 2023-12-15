@@ -24,7 +24,12 @@ const configJSON = {
 }
 
 const axiosIn = axios.create(configJSON)
-console.log(axiosIn.get(`/posts`))
+console.log(axiosIn.get(`/posts/2`))
+console.log(axiosIn.post(`/posts`, {
+    title: 'test',
+    body: 'test',
+    userId: 1,
+}))
 
 
 
