@@ -9,17 +9,30 @@ export const Lesson3 = () => {
     const [serachResultByType, setSerachResultByType] = useState('');
 
 
+    // const searchFilm = () => {
+    //     API.searchFilmsByTitle(searchName)
+    //         .then(res => {
+    //             console.log(res)
+    //             if (res.data.Response === 'True') {
+    //                 setSerachResult(JSON.stringify(res.data.Search))
+    //             } else {
+    //                 console.log(res.data)
+    //                 setSerachResult(res.data.Error)
+    //             }
+    //         })
+    // };
+
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
-            .then(res => {
-                console.log(res)
+            .then((res) => {
+                console.log(res);
                 if (res.data.Response === 'True') {
-                    setSerachResult(JSON.stringify(res.data.Search))
+                    setSerachResult(JSON.stringify(res.data.Search));
                 } else {
-                    console.log(res.data)
-                    setSerachResult(res.data.Error)
+                    console.log(res.data);
+                    setSerachResult(res.data.Error);
                 }
-            })
+            });
     };
 
 
@@ -35,6 +48,13 @@ export const Lesson3 = () => {
                 }
             })
     }
+
+    const handleSearchInputChange = (event: any) => {
+        const {value} = event.target;
+        setSearchName(value);
+    }
+
+
 
     return (
         <div>
