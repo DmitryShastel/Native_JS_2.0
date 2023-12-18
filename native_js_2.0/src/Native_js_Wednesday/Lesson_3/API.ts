@@ -4,6 +4,7 @@ import axios from 'axios';
 const configOMB = {
     baseURL: 'http://www.omdbapi.com',
 };
+
 const key = '/?apikey=d3239a3a';
 const axiosInstance = axios.create(configOMB);
 
@@ -17,6 +18,40 @@ export const API = {
         return axiosInstance.get(query);
     },
 };
+
+
+// Интерцептор запросов
+axiosInstance.interceptors.request.use(
+    function (request) {
+        const query = `${key}&s=${request}`;
+        // Выполните любые операции перед отправкой запроса
+        // Например, добавление заголовков авторизации
+        // config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+        return request;
+    },
+    function (error) {
+        // Обработка ошибки запроса
+        return Promise.reject(error);
+    }
+);
+
+// Интерцептор ответов
+axiosInstance.interceptors.response.use(
+    function (response) {
+        // Выполните любые операции после получения ответа
+        // Например, обработка данных перед передачей компоненту
+        return response;
+    },
+    function (error) {
+        // Обработка ошибки ответа
+        return Promise.reject(error);
+    }
+);
+
+
+
+
+
 
 
 const configJSON = {
@@ -35,10 +70,3 @@ console.log(axiosIn.put(`/posts/2`, {
     body: 'test2',
     userId: 1,
 }))
-
-
-
-
-
-// const baseURL = 'https://jsonplaceholder.typicode.com'
-// console.log(axios.get(`${baseURL}/posts/1`))
