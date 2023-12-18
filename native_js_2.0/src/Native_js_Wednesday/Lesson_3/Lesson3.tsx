@@ -3,22 +3,29 @@ import {API} from './API';
 
 export const Lesson3 = () => {
 
+    type MoveDataType = {
+        Poster: string
+        Title: string
+        Type: string
+        Year: string
+        imdbID: string
+    }
+
     const [searchName, setSearchName] = useState('');
-    const [searchResult, setSearchResult] = useState('');
-    const [searchNameByType, setSearchNameByType] = useState('');
+    const [searchResult, setSearchResult] = useState<MoveDataType[]>();
+    const [searchNameByType, setSearchNameByType] = useState<any>('');
     const [searchResultByType, setSearchResultByType] = useState('');
-    const [jsonData, setJsonData] = useState(null);
 
 
     //Поиск фильма через кнопку
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 if (res.data.Response === 'True') {
-                    setSearchResult(JSON.stringify(res.data.Search))
+                    setSearchResult(res.data.Search)
                 } else {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setSearchResult(res.data.Error)
                 }
             })
@@ -31,34 +38,15 @@ export const Lesson3 = () => {
                 .then((res) => {
                     console.log(res);
                     if (res.data.Response === 'True') {
-                        setSearchResult(JSON.stringify(res.data.Search));
+                        // setSearchResult(res.data.Search);
                     } else if (res.data.Error !== "Incorrect IMDb ID.") {
-                        console.log(res.data.Error);
+                        // console.log(res.data.Error);
                         setSearchResult(res.data.Error);
                     }
                 });
         }, 500); // Задержка в 500 миллисекунд для ожидания ввода
         return () => clearTimeout(delaySearch); // Очистка таймера при каждом изменении значения в поле ввода
     }, [searchName]);
-
-
-    //Поиск фильма через ввод названия фильма
-    useEffect(() => {
-        const delaySearchType = setTimeout(() => {
-                API.searchFilmsByType(searchNameByType, '')
-                    .then((res) => {
-                        console.log(res);
-                        if (res.data.Response === 'True') {
-                            setSearchResultByType(JSON.stringify(res.data.Search));
-                        } else if(res.data.Error !== "Incorrect IMDb ID.") {
-                            setSearchResultByType(res.data.Error);
-                        }
-                    });
-
-        }, 500);
-
-        return () => clearTimeout(delaySearchType);
-    }, [searchNameByType]);
 
     //Поиск типа фильма или сериала через кнопку
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -67,18 +55,36 @@ export const Lesson3 = () => {
             .then(res => {
                 console.log(res)
                 if (res.data.Response === 'True') {
-                    setSearchResultByType(JSON.stringify(res.data.Search))
+                    // setSearchResultByType(res.data.Search)
                 } else {
                     setSearchResultByType(res.data.Error)
                 }
             })
     }
 
+
+    //Поиск фильма по типу через ввод названия фильма
+    useEffect(() => {
+        const delaySearchType = setTimeout(() => {
+            API.searchFilmsByType(searchNameByType, '')
+                .then((res) => {
+                    // console.log(res);
+                    if (res.data.Response === 'True') {
+                        // setSearchResultByType(res.data.Search);
+                    } else if (res.data.Error !== "Incorrect IMDb ID.") {
+                        setSearchResultByType(res.data.Error);
+                    }
+                });
+
+        }, 500);
+
+        return () => clearTimeout(delaySearchType);
+    }, [searchNameByType]);
+
     const handleSearchInputChange = (event: any) => {
         const {value} = event.target;
         setSearchName(value);
     }
-
     const handleSearchTypeInputChange = (event: any) => {
         const {value} = event.target;
         setSearchNameByType(value);
@@ -93,7 +99,19 @@ export const Lesson3 = () => {
                 <input type="text" value={searchName} onChange={handleSearchInputChange}/>
                 <button onClick={searchFilm}>Search</button>
                 <div>
-                    {searchResult}
+                    {searchResult
+                        && (
+                            <ul>
+                                {
+                                    searchResult.map((item: any) => (
+                                        <li key={item.imdbID}>{`${item.Title}: ${item.Year}`}</li>
+                                    ))
+                                }
+                            </ul>
+
+                        )
+
+                    }
                 </div>
             </div>
 
@@ -112,3 +130,6 @@ export const Lesson3 = () => {
         </div>
     );
 }
+
+
+
