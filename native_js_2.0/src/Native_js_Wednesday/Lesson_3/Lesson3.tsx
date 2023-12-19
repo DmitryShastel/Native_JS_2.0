@@ -11,18 +11,24 @@ export const Lesson3 = () => {
         imdbID: string
     }
 
+    type TypeOfMoveType = {
+
+    }
+
     const [searchName, setSearchName] = useState('');
-    const [searchResult, setSearchResult] = useState<MoveDataType[]>();
-    const [searchNameByType, setSearchNameByType] = useState<any>('');
-    const [searchResultByType, setSearchResultByType] = useState('');
+    const [searchResult, setSearchResult] = useState<MoveDataType[]>([]);
+    const [searchNameByType, setSearchNameByType] = useState<any>();
+    const [searchResultByType, setSearchResultByType] = useState<MoveDataType[]>([]);
+    const [json, setJson] = useState<MoveDataType[]>()
 
 
     //Поиск фильма через кнопку
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
             .then(res => {
-                // console.log(res)
+                console.log(res)
                 if (res.data.Response === 'True') {
+                    // setSearchResult(JSON.stringify(res.data.Search))
                     setSearchResult(res.data.Search)
                 } else {
                     // console.log(res.data)
@@ -32,21 +38,21 @@ export const Lesson3 = () => {
     };
 
     //Поиск фильма через ввод названия фильма
-    useEffect(() => {
-        const delaySearch = setTimeout(() => {
-            API.searchFilmsByTitle(searchName)
-                .then((res) => {
-                    console.log(res);
-                    if (res.data.Response === 'True') {
-                        // setSearchResult(res.data.Search);
-                    } else if (res.data.Error !== "Incorrect IMDb ID.") {
-                        // console.log(res.data.Error);
-                        setSearchResult(res.data.Error);
-                    }
-                });
-        }, 500); // Задержка в 500 миллисекунд для ожидания ввода
-        return () => clearTimeout(delaySearch); // Очистка таймера при каждом изменении значения в поле ввода
-    }, [searchName]);
+    // useEffect(() => {
+    //     const delaySearch = setTimeout(() => {
+    //         API.searchFilmsByTitle(searchName)
+    //             .then((res) => {
+    //                 console.log(res);
+    //                 if (res.data.Response === 'True') {
+    //                     // setSearchResult(res.data.Search);
+    //                 } else if (res.data.Error !== "Incorrect IMDb ID.") {
+    //                     // console.log(res.data.Error);
+    //                     setSearchResult(res.data.Error);
+    //                 }
+    //             });
+    //     }, 500); // Задержка в 500 миллисекунд для ожидания ввода
+    //     return () => clearTimeout(delaySearch); // Очистка таймера при каждом изменении значения в поле ввода
+    // }, [searchName]);
 
     //Поиск типа фильма или сериала через кнопку
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,31 +61,31 @@ export const Lesson3 = () => {
             .then(res => {
                 console.log(res)
                 if (res.data.Response === 'True') {
-                    // setSearchResultByType(res.data.Search)
+                    // setSearchResultByType(JSON.stringify(res.data.Search))
+                    setSearchResultByType(res.data.Search)
                 } else {
                     setSearchResultByType(res.data.Error)
                 }
             })
     }
 
-
     //Поиск фильма по типу через ввод названия фильма
-    useEffect(() => {
-        const delaySearchType = setTimeout(() => {
-            API.searchFilmsByType(searchNameByType, '')
-                .then((res) => {
-                    // console.log(res);
-                    if (res.data.Response === 'True') {
-                        // setSearchResultByType(res.data.Search);
-                    } else if (res.data.Error !== "Incorrect IMDb ID.") {
-                        setSearchResultByType(res.data.Error);
-                    }
-                });
-
-        }, 500);
-
-        return () => clearTimeout(delaySearchType);
-    }, [searchNameByType]);
+    // useEffect(() => {
+    //     const delaySearchType = setTimeout(() => {
+    //         API.searchFilmsByType(searchNameByType, '')
+    //             .then((res) => {
+    //                 // console.log(res);
+    //                 if (res.data.Response === 'True') {
+    //                     // setSearchResultByType(res.data.Search);
+    //                 } else if (res.data.Error !== "Incorrect IMDb ID.") {
+    //                     setSearchResultByType(res.data.Error);
+    //                 }
+    //             });
+    //
+    //     }, 500);
+    //
+    //     return () => clearTimeout(delaySearchType);
+    // }, [searchNameByType]);
 
     const handleSearchInputChange = (event: any) => {
         const {value} = event.target;
@@ -99,19 +105,12 @@ export const Lesson3 = () => {
                 <input type="text" value={searchName} onChange={handleSearchInputChange}/>
                 <button onClick={searchFilm}>Search</button>
                 <div>
-                    {searchResult
-                        && (
-                            <ul>
-                                {
-                                    searchResult.map((item: any) => (
-                                        <li key={item.imdbID}>{`${item.Title}: ${item.Year}`}</li>
-                                    ))
-                                }
-                            </ul>
-
-                        )
-
-                    }
+                    {/*{searchResult && searchResult.map((item: MoveDataType) => (*/}
+                    {/*    <div key={item.imdbID}>{item.Title}</div>*/}
+                    {/*))}*/}
+                    {searchResult.map((item: MoveDataType) => (
+                        <div key={item.imdbID}>{item.Title}: {item.Year}</div>
+                    ))}
                 </div>
             </div>
 
@@ -124,7 +123,11 @@ export const Lesson3 = () => {
                 <button onClick={searchByType} data-t='movie'>Movie</button>
                 <button onClick={searchByType} data-t='series'>Series</button>
                 <div>
-                    {searchResultByType}
+                    {searchResultByType.map((item: MoveDataType) => (
+                        <div key={item.imdbID}>{item.Title}: {item.Type}</div>
+                    ))}
+
+                    {/*{searchResultByType}*/}
                 </div>
             </div>
         </div>
