@@ -23,6 +23,7 @@ export const Lesson3 = () => {
             .then(res => {
                 console.log(res)
                 if (res.data.Response === 'True') {
+                    //для простого вывода на фронт
                     // setSearchResult(JSON.stringify(res.data.Search))
                     setSearchResult(res.data.Search)
                 } else {
@@ -47,7 +48,6 @@ export const Lesson3 = () => {
                 console.error(error);
             }
         };
-
         if (searchName.length > 0) {
             searchFilmByTitle();
         } else {
@@ -62,6 +62,7 @@ export const Lesson3 = () => {
             .then(res => {
                 console.log(res)
                 if (res.data.Response === 'True') {
+                    //для простого вывода на фронт
                     // setSearchResultByType(JSON.stringify(res.data.Search))
                     setSearchResultByType(res.data.Search)
                 } else {
@@ -70,6 +71,7 @@ export const Lesson3 = () => {
             })
     }
 
+    //Поиск типа фильма или сериала через ввод названия фильма
     useEffect(() => {
         const searchFilmByType = async () => {
             try {
@@ -119,7 +121,7 @@ export const Lesson3 = () => {
                         ) : (
                             searchResult &&
                             searchResult.map((item: MoveDataType) => (
-                                <div key={item.imdbID}>{item.Title}</div>
+                                <div key={item.imdbID}>{item.Title}: {item.Year}</div>
                             ))
                         )}
                     </div>
