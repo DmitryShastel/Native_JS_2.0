@@ -148,10 +148,51 @@
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+// const pr = Promise.resolve('Promise Data')
+//
+// pr.then(data => {
+//     console.log(data)
+// })
+// console.log(pr)
 
-const pr = Promise.resolve('Promise Data')
+// Task 03
+// Создайте промис, который после создания сразу же переходит в состояние rejected
+// и возвращает строку 'Promise Error'
+// Получите данные промиса и выведите их в консоль
 
-pr.then(data => {
+const pr = Promise.reject('Promise Error')
+
+pr.catch(data => {
     console.log(data)
 })
 console.log(pr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
