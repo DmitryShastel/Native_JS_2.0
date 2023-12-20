@@ -1,54 +1,50 @@
-const axios = {
-    get(url) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                const response = {
-                    vacancies: [
-                        {id: 1, title: 'js'},
-                        {id: 2, title: 'css'},
-                    ],
-                    status: 200,
-                    headers: {},
-                    data: [],
-                };
-
-                // const response = [{title: 'hello'},{},{}]
-                resolve(response)
-            })
-        })
-    }
-}
-const findUserInDB = (id) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const users = [
-                {id: 1, name: 'Bob', friend: 2},
-                {id: 2, name: 'Anna', friend: 1},
-                {id: 3, name: 'Sveta', friend: null},
-            ];
-            const filteredUser = users.filter((el) => el.id === id);
-            if (filteredUser.length > 0) {
-                resolve(filteredUser[0]);
-            } else {
-                reject(new Error('User not found'))
-            }
-            return filteredUser
-        })
-    })
-}
-
-
-async function run () {
-    let user = await findUserInDB(1)
-    console.log(user.name)
-    let friend1 = await findUserInDB(user.friend)
-    console.log(friend1.name)
-    let friend2 = await findUserInDB(friend1.friend)
-    console.log(friend2.name)
-}
-
-run();
-
+// const axios = {
+//     get(url) {
+//         return new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 const response = {
+//                     vacancies: [
+//                         {id: 1, title: 'js'},
+//                         {id: 2, title: 'css'},
+//                     ],
+//                     status: 200,
+//                     headers: {},
+//                     data: [],
+//                 };
+//
+//                 // const response = [{title: 'hello'},{},{}]
+//                 resolve(response)
+//             })
+//         })
+//     }
+// }
+// const findUserInDB = (id) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const users = [
+//                 {id: 1, name: 'Bob', friend: 2},
+//                 {id: 2, name: 'Anna', friend: 1},
+//                 {id: 3, name: 'Sveta', friend: null},
+//             ];
+//             const filteredUser = users.filter((el) => el.id === id);
+//             if (filteredUser.length > 0) {
+//                 resolve(filteredUser[0]);
+//             } else {
+//                 reject(new Error('User not found'))
+//             }
+//             return filteredUser
+//         })
+//     })
+// }
+// async function run () {
+//     let user = await findUserInDB(1)
+//     console.log(user.name)
+//     let friend1 = await findUserInDB(user.friend)
+//     console.log(friend1.name)
+//     let friend2 = await findUserInDB(friend1.friend)
+//     console.log(friend2.name)
+// }
+// run();
 
 //CHAIN of promise
 // const lastPromise = findUserInDB(1)
@@ -137,3 +133,14 @@ run();
 //         })
 //     }
 // }
+
+
+
+// Task 01
+// Создайте промис, который постоянно находиться в состоянии pending.
+// В конструкторе промиса выведите в консоль сообщение "Promise is created".
+const pr = new Promise(() => {
+    console.log('Promise is created')
+})
+
+console.log(pr)
