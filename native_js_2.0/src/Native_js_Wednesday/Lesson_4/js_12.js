@@ -159,18 +159,30 @@
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+// const pr = Promise.reject('Promise Error')
+//
+// pr.catch(data => {
+//     console.log(data)
+// })
+// console.log(pr)
 
-const pr = Promise.reject('Promise Error')
+// Task 04
+// Создайте промис, который переходит в состояние resolved через 3с.
+// (Используйте setTimeout)
+// и возвращает строку 'Promise Data'
+// Получите данные промиса и выведите их в консоль
 
-pr.catch(data => {
+
+const pr = new Promise((res) => {
+    setTimeout(() => {
+        res('Promise Data')
+    }, 3000)
+})
+
+pr.then(data => {
     console.log(data)
 })
 console.log(pr)
-
-
-
-
-
 
 
 
