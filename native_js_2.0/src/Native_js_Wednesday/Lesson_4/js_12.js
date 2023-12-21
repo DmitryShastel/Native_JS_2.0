@@ -162,9 +162,8 @@
 //
 // pr.catch(data => {
 //     console.log(data)
-// })
+// )
 // console.log(pr)
-
 // Task 04
 // Создайте промис, который переходит в состояние resolved через 3с.
 // (Используйте setTimeout)
@@ -219,40 +218,66 @@
 // };
 // // console.log(createPromiseHandle(handlePromise))
 
-
 // Task 06
 // Создайте промис, который через 1 с возвращает строку "My name is".
 // Создайте функцию onSuccess, которая получает один параметр,
 // прибавляет к нему Ваше имя и возвращает новую строку из функции
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
+// const myNamePromise = new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve("My name is");
+//     }, 1000);
+// });
+//
+// const onSuccess = (name) => {
+//     return name + " YourName"; // Замените "YourName" на ваше имя
+// };
+//
+// const print = (value) => {
+//     console.log(value);
+// };
+//
+// myNamePromise
+//     .then(onSuccess)
+//     .then(print)
+//     .catch((error) => {
+//         console.log("Произошла ошибка:", error);
+//     });
 
 
-const myNamePromise = new Promise((resolve) => {
+// Task 7
+// Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
+// второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
+// Получите результаты работы промисов, объедините свойства объектов
+// и выведите в консоль {name, age, city}
+
+let pr1 = new Promise((res) => {
     setTimeout(() => {
-        resolve("My name is");
-    }, 1000);
-});
+        console.log("Выполнение асинхронной операции pr1");
+        res({name: "Anna"})
+    }, 2000)
+}).then((value) => {
+    console.log(`Из промиса получены данные: ${value.name}`)
+})
 
-const onSuccess = (name) => {
-    return name + " YourName"; // Замените "YourName" на ваше имя
-};
+let pr2 = new Promise((res) => {
+    setTimeout(() => {
+        console.log("Выполнение асинхронной операции pr2");
+        res({age: 16})
+    }, 3000)
+}).then((value) => {
+    console.log(`Из промиса получены данные: ${value.age}`)
+})
 
-const print = (value) => {
-    console.log(value);
-};
-
-myNamePromise
-    .then(onSuccess)
-    .then(print)
-    .catch((error) => {
-        console.log("Произошла ошибка:", error);
-    });
-
-
-
-
-
+let pr3 = new Promise((res) => {
+    setTimeout(() => {
+        console.log("Выполнение асинхронной операции pr3");
+        res({city: 'Minsk'})
+    }, 4000)
+}).then((value) => {
+    console.log(`Из промиса получены данные: ${value.city}`)
+})
 
 
 
