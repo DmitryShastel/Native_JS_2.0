@@ -134,7 +134,6 @@
 //     }
 // }
 
-
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
@@ -171,33 +170,84 @@
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+// const pr = new Promise((res) => {
+//     setTimeout(() => {
+//         res('Promise Data')
+//     }, 3000)
+// })
+//
+// pr.then(data => {
+//     console.log(data)
+// })
+// console.log(pr)
+
+// Task 05
+// Создайте литерал объекта handlePromise со следующими свойствами:
+// promise, resolve, reject, onSuccess, onError
+// Проинициализируйте первые три свойства null,
+// а последние два функциями, которые принимают один параметр и выводят
+// в консоль сообщения: первая - `Promise is resolved with data: ${paramName}`
+// вторая - `Promise is rejected with error: ${paramName}`
+// Создайте три обработчика события click для кнопок "Create Promise", "Resolve Promise", "Reject Promise".
+// Первый обработчик, создает промис, заполняет первые три свойства,
+// описаного выше объекта: свойство promise получает новый созданный промис,
+// свойства resolve и reject получают ссылки на соответствующие функции
+// resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
 
-const pr = new Promise((res) => {
+// let handlePromise = {
+//     promise: null,
+//     resolve: null,
+//     reject: null,
+//     onSuccess: function (paramName) {
+//         console.log(`Promise успешно разрешен с данными: ${paramName}`);
+//     },
+//     onError: function (paramName) {
+//         console.log(`Promise отклонен с ошибкой: ${paramName}`);
+//     },
+// };
+// export let createPromiseHandle = (handlePromise) => {
+//     handlePromise.promise = new Promise((res, rej) => {
+//         res(console.log(handlePromise.resolve = res))
+//         res(console.log(handlePromise.reject = rej))
+//     })
+//     return console.log(handlePromise)
+// }
+// export let resolvePromiseHandle = function (handlePromise) {
+//     handlePromise.resolve('resolved data')
+//
+// };
+// // console.log(createPromiseHandle(handlePromise))
+
+
+// Task 06
+// Создайте промис, который через 1 с возвращает строку "My name is".
+// Создайте функцию onSuccess, которая получает один параметр,
+// прибавляет к нему Ваше имя и возвращает новую строку из функции
+// Создайте функцию print, которая выводит в консоль значение своего параметра
+// Добавьте два метода then и передайте созданные функции.
+
+
+const myNamePromise = new Promise((resolve) => {
     setTimeout(() => {
-        res('Promise Data')
-    }, 3000)
-})
+        resolve("My name is");
+    }, 1000);
+});
 
-pr.then(data => {
-    console.log(data)
-})
-console.log(pr)
+const onSuccess = (name) => {
+    return name + " YourName"; // Замените "YourName" на ваше имя
+};
 
+const print = (value) => {
+    console.log(value);
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+myNamePromise
+    .then(onSuccess)
+    .then(print)
+    .catch((error) => {
+        console.log("Произошла ошибка:", error);
+    });
 
 
 
