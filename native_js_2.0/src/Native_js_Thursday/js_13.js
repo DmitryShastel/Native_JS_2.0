@@ -16,18 +16,37 @@ let axios = {
 
 let promise = axios.get();
 
-promise.then((message) => {
-    return message.message
-})
-    .then((message) => console.log(message))
+// promise.then((message) => {
+//     return message.message
+// })
+//     .then((message) => console.log(message))
 
-// let a = {
-//     sum(a, b) {
-//         console.log(a + b)
-//         return this
-//     }
-// }
-//
-// a.sum(1, 1)
-//     .sum(2, 2)
-//     .sum(3, 2)
+
+let fetch = (url) => {
+    return new Promise((res, reg) => {
+        switch (url) {
+            case 'google': {
+                setTimeout(() => {
+                    res({date: 'from google'})
+                }, 2000)
+                break
+            }
+            case 'microsoft': {
+                setTimeout(() => {
+                    res({date: 'from microsoft'})
+                }, 3000)
+                break
+            }
+            case 'it-kamasutra': {
+                setTimeout(() => {
+                    res({date: 'from kamasutra'})
+                }, 1000)
+                break
+            }
+        }
+    })
+}
+
+fetch('google').then(data => console.log(data))
+fetch('microsoft').then(data => console.log(data))
+fetch('it-kamasutra').then(data => console.log(data))
