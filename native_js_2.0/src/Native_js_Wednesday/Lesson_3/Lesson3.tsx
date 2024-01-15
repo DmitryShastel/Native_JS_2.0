@@ -32,7 +32,6 @@ export const Lesson3 = () => {
                 }
             })
     };
-
     //Поиск фильма через ввод названия фильма
     useEffect(() => {
         const searchFilmByTitle = async () => {
@@ -54,7 +53,6 @@ export const Lesson3 = () => {
             setSearchResult(undefined);
         }
     }, [searchName]);
-
     //Поиск типа фильма или сериала через кнопку
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
@@ -70,7 +68,6 @@ export const Lesson3 = () => {
                 }
             })
     }
-
     //Поиск типа фильма или сериала через ввод названия фильма
     useEffect(() => {
         const searchFilmByType = async () => {
@@ -102,6 +99,7 @@ export const Lesson3 = () => {
         setSearchName(value);
     }
     const handleSearchTypeInputChange = (event: any) => {
+
         const {value} = event.target;
         setSearchNameByType(value);
     };

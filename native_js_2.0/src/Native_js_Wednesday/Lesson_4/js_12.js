@@ -252,32 +252,72 @@
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
 
-let pr1 = new Promise((res) => {
-    setTimeout(() => {
-        console.log("Выполнение асинхронной операции pr1");
-        res({name: "Anna"})
-    }, 2000)
-}).then((value) => {
-    console.log(`Из промиса получены данные: ${value.name}`)
-})
+// let pr1 = new Promise((res) => {
+//     setTimeout(() => {
+//         console.log("Выполнение асинхронной операции pr1");
+//         res({name: "Anna"})
+//     }, 2000)
+// }).then((value) => {
+//     console.log(`Из промиса получены данные: ${value.name}`)
+// })
+//
+// let pr2 = new Promise((res) => {
+//     setTimeout(() => {
+//         console.log("Выполнение асинхронной операции pr2");
+//         res({age: 16})
+//     }, 3000)
+// }).then((value) => {
+//     console.log(`Из промиса получены данные: ${value.age}`)
+// })
+//
+// let pr3 = new Promise((res) => {
+//     setTimeout(() => {
+//         console.log("Выполнение асинхронной операции pr3");
+//         res({city: 'Minsk'})
+//     }, 4000)
+// }).then((value) => {
+//     console.log(`Из промиса получены данные: ${value.city}`)
+// })
 
-let pr2 = new Promise((res) => {
-    setTimeout(() => {
-        console.log("Выполнение асинхронной операции pr2");
-        res({age: 16})
-    }, 3000)
-}).then((value) => {
-    console.log(`Из промиса получены данные: ${value.age}`)
-})
 
-let pr3 = new Promise((res) => {
+//macro/micro tasks:
+//Task1
+console.log(1);
+
+function f() {
+    console.log(2)
+}
+
+setTimeout(() => {
+    console.log(3);
+    let p = new Promise((res, rej) => {
+        console.log(4);
+        res();
+    });
+    p.then(() => f())
+}, 0);
+let l = new Promise((res, reg) => {
+    console.log(5);
+    reg();
+});
+l.then(res => console.log(res)).catch(() => console.log(6))
+console.log(7);
+
+
+//Task 2
+async function sleep(ms) {
     setTimeout(() => {
-        console.log("Выполнение асинхронной операции pr3");
-        res({city: 'Minsk'})
-    }, 4000)
-}).then((value) => {
-    console.log(`Из промиса получены данные: ${value.city}`)
-})
+        console.log(ms);
+    }, ms * 1000)
+}
+
+async function show() {
+    await sleep(3)
+    await sleep(2)
+    await sleep(1)
+}
+
+show();
 
 
 
