@@ -1,11 +1,33 @@
 let axios = {
     get() {
-        return new Promise((res, rej) => {
+        let pr = new Promise((res, rej) => {
             setTimeout(() => {
-                res('hello')
+                res({
+                    message: 'hello',
+                    a: 1,
+                    v: 5,
+
+                })
             }, 3000)
         })
+        return pr
     }
 }
 
-axios.get().then(data => console.log(data))
+let promise = axios.get();
+
+promise.then((message) => {
+    return message.message
+})
+    .then((message) => console.log(message))
+
+// let a = {
+//     sum(a, b) {
+//         console.log(a + b)
+//         return this
+//     }
+// }
+//
+// a.sum(1, 1)
+//     .sum(2, 2)
+//     .sum(3, 2)
