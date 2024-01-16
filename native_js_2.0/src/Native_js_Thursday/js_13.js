@@ -54,17 +54,20 @@ let fetch = (url) => {
 //     })
 //     .then(data => console.log(data))
 
+//
+// let myPromise = new Promise((res, rej) => {
+//     doAfter(){}
+// })
 
-let myPromise = new Promise((res, rej) => {
-    res(
+let doAfter = (num) => {
+    return new Promise((res, rej) => {
         setTimeout(() => {
-            console.log('hello')
-        }, 2000)
-    )
-    console.log('1')
-    console.log('2')
-})
+            res()
+        }, num)
+    })
 
-myPromise.then((data) => {
-    return console.log('hello2')
-})
+};
+
+doAfter(5).then(() => console.log('я сработал через 5 сек'))
+doAfter(2).then(() => console.log('я сработал через 2 сек'))
+doAfter(3).then(() => console.log('я сработал через 3 сек'))
