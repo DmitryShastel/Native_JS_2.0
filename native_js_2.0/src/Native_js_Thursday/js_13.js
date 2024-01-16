@@ -13,15 +13,11 @@ let axios = {
         return pr
     }
 }
-
 let promise = axios.get();
-
 // promise.then((message) => {
 //     return message.message
 // })
 //     .then((message) => console.log(message))
-
-
 let fetch = (url) => {
     return new Promise((res, reg) => {
         switch (url) {
@@ -59,12 +55,16 @@ let fetch = (url) => {
 //     .then(data => console.log(data))
 
 
-
 let myPromise = new Promise((res, rej) => {
-    res(console.log('hello'))
-
+    res(
+        setTimeout(() => {
+            console.log('hello')
+        }, 2000)
+    )
+    console.log('1')
+    console.log('2')
 })
 
 myPromise.then((data) => {
-   return  console.log('hello2')
+    return console.log('hello2')
 })
