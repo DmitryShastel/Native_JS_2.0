@@ -47,6 +47,24 @@ let fetch = (url) => {
     })
 }
 
-fetch('google').then(data => console.log(data))
-fetch('microsoft').then(data => console.log(data))
-fetch('it-kamasutra').then(data => console.log(data))
+// fetch('it-kamasutra')
+//     .then(data => {
+//         console.log(data);
+//         return fetch('google')
+//     })
+//     .then(data => {
+//         console.log(data);
+//         return fetch('microsoft')
+//     })
+//     .then(data => console.log(data))
+
+
+
+let myPromise = new Promise((res, rej) => {
+    res(console.log('hello'))
+
+})
+
+myPromise.then((data) => {
+   return  console.log('hello2')
+})
