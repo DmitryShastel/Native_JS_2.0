@@ -1,15 +1,26 @@
-class User {
-    constructor(name, site, dob) {
-        this.name = name;
-        this.site = site;
-        this.dob = dob;
-    }
+// class User {
+//     constructor(name, site, dob) {
+//         this.name = name;
+//         this.site = site;
+//         this.dob = dob;
+//     }
+//
+//     hello() {
+//         console.log(`I am ${this.name} from ${this.site}`)
+//     }
+// }
+//
+// const u1 = new User('Dima', 'iy-incubator', new Date(1990, 11, 8))
+// console.log(u1)
 
-    hello() {
-        console.log(`I am ${this.name} from ${this.site}`)
+'use strict';
+
+
+const user = {
+    name: 'Alex',
+    showName() {
+        console.log(this)
     }
 }
 
-const u1 = new User('Dima', 'iy-incubator', new Date(1990, 11, 8))
-
-console.log(u1)
+user.showName()
