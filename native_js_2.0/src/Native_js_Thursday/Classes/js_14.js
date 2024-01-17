@@ -16,11 +16,23 @@
 'use strict';
 
 
+// const user = {
+//     name: 'Alex',
+//     showName() {
+//         console.log(this)
+//     }
+// }
+//
+// user.showName()
+
 const user = {
-    name: 'Alex',
-    showName() {
-        console.log(this)
+    age: 23,
+    showAge() {
+        const foo = () => {
+            console.log(this.age)
+        }
+        foo.call({age: 12})
     }
 }
 
-user.showName()
+user.showAge({age: 20})
