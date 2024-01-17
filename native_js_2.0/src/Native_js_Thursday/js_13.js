@@ -63,7 +63,7 @@ let doAfter = (num) => {
     return new Promise((res, rej) => {
         setTimeout(() => {
             res()
-        }, num)
+        }, num * 1000)
     })
 
 };
