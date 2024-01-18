@@ -79,7 +79,6 @@
 // a.run()
 // a.stop()
 
-
 // const test = {
 //     prop: 42,
 //     func: function () {
@@ -108,24 +107,34 @@
 // user.fun()
 
 
-let calculator = {
-    read() {
-        this.a = +prompt('enter value a')
-        this.b = +prompt('enter value b')
+// let calculator = {
+//     read() {
+//         this.a = +prompt('enter value a')
+//         this.b = +prompt('enter value b')
+//
+//         return console.log(this.a, this.b)
+//     },
+//     sum() {
+//         return +prompt('sum is:', this.a + this.b)
+//     },
+//     mul() {
+//         return +prompt('mul is:', this.a * this.b)
+//     }
+//
+// };
 
-        return console.log(this.a, this.b)
-    },
-    sum() {
-        return +prompt('sum is:', this.a + this.b)
-    },
-    mul(){
-        return +prompt('mul is:', this.a * this.b)
-    }
 
+let c = {}
+
+function A() {
+    return c
 }
 
-calculator.read()
-// calculator.sum()
-calculator.mul()
+function B() {
+    return c
+}
 
+let a = new A();
+let b = new B();
 
+console.log(a == b)
