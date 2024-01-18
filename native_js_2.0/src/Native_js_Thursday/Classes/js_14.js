@@ -24,7 +24,6 @@
 // }
 //
 // user.showName()
-
 // const user = {
 //     age: 23,
 //     showAge() {
@@ -36,7 +35,6 @@
 // }
 //
 // user.showAge.call({age: 20})
-
 // const a = {
 //     msg: 'Hello World',
 //
@@ -100,7 +98,34 @@
 // console.log(g())
 // console.log(h())
 
+// let user = {
+//     name: 'Dima',
+//     age: 33,
+//     fun() {
+//         console.log(this.age)
+//     }
+// }
+// user.fun()
 
 
+let calculator = {
+    read() {
+        this.a = +prompt('enter value a')
+        this.b = +prompt('enter value b')
+
+        return console.log(this.a, this.b)
+    },
+    sum() {
+        return +prompt('sum is:', this.a + this.b)
+    },
+    mul(){
+        return +prompt('mul is:', this.a * this.b)
+    }
+
+}
+
+calculator.read()
+// calculator.sum()
+calculator.mul()
 
 
