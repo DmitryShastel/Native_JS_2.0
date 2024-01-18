@@ -107,34 +107,58 @@
 // user.fun()
 
 
-// let calculator = {
-//     read() {
-//         this.a = +prompt('enter value a')
-//         this.b = +prompt('enter value b')
+// let c = {}
 //
-//         return console.log(this.a, this.b)
-//     },
-//     sum() {
-//         return +prompt('sum is:', this.a + this.b)
-//     },
-//     mul() {
-//         return +prompt('mul is:', this.a * this.b)
+// function A() {
+//     return c
+// }
+//
+// function B() {
+//     return c
+// }
+//
+// let a = new A();
+// let b = new B();
+//
+// console.log(a == b)
+
+let calculator = {
+    read() {
+        this.a = +prompt('enter value a')
+        this.b = +prompt('enter value b')
+
+        return console.log(this.a, this.b)
+    },
+    sum() {
+        return +prompt('sum is:', this.a + this.b)
+    },
+    mul() {
+        return +prompt('mul is:', this.a * this.b)
+    }
+
+};
+
+
+// function Person(pName, pAge) {
+//     this.name = pName;
+//     this.age = pAge;
+//     this.print = function () {
+//         console.log(`Name: ${this.name} Age: ${this.age}`)
 //     }
+// }
 //
-// };
+// const tom = new Person('Tom', 20)
+// console.log(tom.name)
 
 
-let c = {}
 
-function A() {
-    return c
+let someObj = {
+    name: 'Eugene',
+    age: 322,
+    greeting(){
+        console.log(`My name is ${this.name}. I am ${this.age}`)
+    }
 }
 
-function B() {
-    return c
-}
 
-let a = new A();
-let b = new B();
-
-console.log(a == b)
+someObj.greeting()
