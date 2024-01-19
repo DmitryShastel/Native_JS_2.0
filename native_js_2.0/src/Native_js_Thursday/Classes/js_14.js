@@ -150,15 +150,34 @@ let calculator = {
 // const tom = new Person('Tom', 20)
 // console.log(tom.name)
 
+// let someObj = {
+//     name: 'Eugene',
+//     age: 322,
+//     greeting(){
+//         console.log(`My name is ${this.name}. I am ${this.age}`)
+//     }
+// }
+//
+//
+// someObj.greeting()
 
 
-let someObj = {
-    name: 'Eugene',
-    age: 322,
-    greeting(){
-        console.log(`My name is ${this.name}. I am ${this.age}`)
+const data = [
+    {name: 'Samanta', age: 12},
+    {name: 'Alexis', age: 14}
+]
+
+const user = {
+    data: [
+        {name:"T. Woods", age:37},
+        {name:"P. Mickelson", age:43}
+    ],
+    showData: function() {
+        let randomNum = Math.floor(Math.random() * 2);
+        console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
     }
 }
 
-
-someObj.greeting()
+let showDataVar = user.showData();
+console.log(showDataVar)
+showDataVar();
