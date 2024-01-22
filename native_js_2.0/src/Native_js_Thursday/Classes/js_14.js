@@ -259,4 +259,20 @@ let One = {name: 'One'};
 let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
 
 let result = Two.sayHello.bind(One)
-console.log(result())
+
+let helperObj = {
+    name: '',
+    age: 0,
+    changeName(newName){
+        return this.name = newName
+    },
+    setAge(newAge){
+        return this.age = newAge
+    },
+    greeting(){
+        return console.log(`Hello, my name is ${this.name}`)
+    },
+}
+
+let helperName = helperObj.changeName('Dima2')
+console.log(helperName)
