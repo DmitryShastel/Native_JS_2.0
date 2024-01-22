@@ -139,14 +139,14 @@ let calculator = {
 };
 
 
-// function Person(pName, pAge) {
-//     this.name = pName;
-//     this.age = pAge;
-//     this.print = function () {
-//         console.log(`Name: ${this.name} Age: ${this.age}`)
-//     }
-// }
-//
+function Person(pName, pAge) {
+    this.name = pName;
+    this.age = pAge;
+    this.print = function () {
+        console.log(`Name: ${this.name} Age: ${this.age}`)
+    }
+}
+
 // const tom = new Person('Tom', 20)
 // console.log(tom.name)
 
@@ -183,75 +183,80 @@ let calculator = {
 // showDataVar();
 
 
+// let counter = {
+//     value: 0,
+//     getCurrentCount(){
+//         return console.log(this.value)
+//     },
+//     increment(){
+//         return console.log(++this.value)
+//     },
+//     decrement(){
+//         return console.log(--this.value)
+//     },
+//     setCurrentCount(value){
+//         return console.log(this.value = value)
+//     },
+//     restCurrentCount(){
+//         return console.log(this.value = 0)
+//     },
+// }
+//
+// let counter2 = {
+//     value: 0,
+//     getCurrentCount(){
+//         return this.value
+//     },
+//     increment(){
+//         this.value++
+//         return this
+//     },
+//     decrement(){
+//         this.value --
+//         return this
+//     },
+//     setCurrentCount(value){
+//         this.value = value
+//         return this
+//     },
+//     restCurrentCount(){
+//         this.value = 0
+//         return this
+//     },
+// }
+//
+// let result = counter2.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount()
+// console.log(result)
+//
+// const counter3 = {
+//     count: 0,
+//     getCurrentCount: function() {
+//         return this.count;
+//     },
+//     increment: function() {
+//         this.count++;
+//         return this; // возвращаем ссылку на сам объект
+//     },
+//     decrement: function() {
+//         this.count--;
+//         return this; // возвращаем ссылку на сам объект
+//     },
+//     setCurrentCount: function(value) {
+//         this.count = value;
+//         return this; // возвращаем ссылку на сам объект
+//     },
+//     resetCurrentCount: function() {
+//         this.count = 0;
+//         return this; // возвращаем ссылку на сам объект
+//     }
+// };
+//
+// // Пример использования:
+// const result2 = counter3.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount();
+// console.log(result2); // 12
 
-let counter = {
-    value: 0,
-    getCurrentCount(){
-        return console.log(this.value)
-    },
-    increment(){
-        return console.log(++this.value)
-    },
-    decrement(){
-        return console.log(--this.value)
-    },
-    setCurrentCount(value){
-        return console.log(this.value = value)
-    },
-    restCurrentCount(){
-        return console.log(this.value = 0)
-    },
-}
+let One = {name: 'One'};
+let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
 
-let counter2 = {
-    value: 0,
-    getCurrentCount(){
-        return this.value
-    },
-    increment(){
-        this.value++
-        return this
-    },
-    decrement(){
-        this.value --
-        return this
-    },
-    setCurrentCount(value){
-        this.value = value
-        return this
-    },
-    restCurrentCount(){
-        this.value = 0
-        return this
-    },
-}
-
-let result = counter2.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount()
-console.log(result)
-
-const counter3 = {
-    count: 0,
-    getCurrentCount: function() {
-        return this.count;
-    },
-    increment: function() {
-        this.count++;
-        return this; // возвращаем ссылку на сам объект
-    },
-    decrement: function() {
-        this.count--;
-        return this; // возвращаем ссылку на сам объект
-    },
-    setCurrentCount: function(value) {
-        this.count = value;
-        return this; // возвращаем ссылку на сам объект
-    },
-    resetCurrentCount: function() {
-        this.count = 0;
-        return this; // возвращаем ссылку на сам объект
-    }
-};
-
-// Пример использования:
-const result2 = counter3.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount();
-console.log(result2); // 12
+let result = Two.sayHello.bind(One)
+console.log(result())
