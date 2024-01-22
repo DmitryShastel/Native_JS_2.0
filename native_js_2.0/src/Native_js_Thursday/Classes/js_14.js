@@ -203,8 +203,55 @@ let counter = {
     },
 }
 
-counter.getCurrentCount()
-counter.increment()
-counter.decrement()
-counter.setCurrentCount(20)
-counter.restCurrentCount()
+let counter2 = {
+    value: 0,
+    getCurrentCount(){
+        return this.value
+    },
+    increment(){
+        this.value++
+        return this
+    },
+    decrement(){
+        this.value --
+        return this
+    },
+    setCurrentCount(value){
+        this.value = value
+        return this
+    },
+    restCurrentCount(){
+        this.value = 0
+        return this
+    },
+}
+
+let result = counter2.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount()
+console.log(result)
+
+const counter3 = {
+    count: 0,
+    getCurrentCount: function() {
+        return this.count;
+    },
+    increment: function() {
+        this.count++;
+        return this; // возвращаем ссылку на сам объект
+    },
+    decrement: function() {
+        this.count--;
+        return this; // возвращаем ссылку на сам объект
+    },
+    setCurrentCount: function(value) {
+        this.count = value;
+        return this; // возвращаем ссылку на сам объект
+    },
+    resetCurrentCount: function() {
+        this.count = 0;
+        return this; // возвращаем ссылку на сам объект
+    }
+};
+
+// Пример использования:
+const result2 = counter3.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount();
+console.log(result2); // 12
