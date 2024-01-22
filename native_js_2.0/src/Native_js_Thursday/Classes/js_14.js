@@ -162,22 +162,49 @@ let calculator = {
 // someObj.greeting()
 
 
-const data = [
-    {name: 'Samanta', age: 12},
-    {name: 'Alexis', age: 14}
-]
+// const data = [
+//     {name: 'Samanta', age: 12},
+//     {name: 'Alexis', age: 14}
+// ]
+//
+// const user = {
+//     data: [
+//         {name:"T. Woods", age:37},
+//         {name:"P. Mickelson", age:43}
+//     ],
+//     showData: function() {
+//         let randomNum = Math.floor(Math.random() * 2);
+//         console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
+//     }
+// }
+//
+// let showDataVar = user.showData();
+// console.log(showDataVar)
+// showDataVar();
 
-const user = {
-    data: [
-        {name:"T. Woods", age:37},
-        {name:"P. Mickelson", age:43}
-    ],
-    showData: function() {
-        let randomNum = Math.floor(Math.random() * 2);
-        console.log(this.data[randomNum].name + " " + this.data[randomNum].age);
-    }
+
+
+let counter = {
+    value: 0,
+    getCurrentCount(){
+        return console.log(this.value)
+    },
+    increment(){
+        return console.log(++this.value)
+    },
+    decrement(){
+        return console.log(--this.value)
+    },
+    setCurrentCount(value){
+        return console.log(this.value = value)
+    },
+    restCurrentCount(){
+        return console.log(this.value = 0)
+    },
 }
 
-let showDataVar = user.showData();
-console.log(showDataVar)
-showDataVar();
+counter.getCurrentCount()
+counter.increment()
+counter.decrement()
+counter.setCurrentCount(20)
+counter.restCurrentCount()
