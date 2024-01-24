@@ -301,39 +301,64 @@ let Two = {
 //CLASS
 
 //Base syntax
-class User {
-
-    age = 23
-    someFunc = () => {
-    }
-    someFunc2 = function () {
-    }
-
-    constructor(name) {
-        this.name = name
-    }
-
-    sayHi() {
-        console.log(this.name)
-    }
-}
-
-const user = new User('Alex')
+// class User {
+//
+//     age = 23
+//     someFunc = () => {
+//     }
+//     someFunc2 = function () {
+//     }
+//
+//     constructor(name) {
+//         this.name = name
+//     }
+//
+//     sayHi() {
+//         console.log(this.name)
+//     }
+// }
+//
+// const user = new User('Alex')
 // console.log(user)
 
 //static methods of class
+// class Test {
+//     static DEFAULT_NAME_LENGTH = 20
+//     static validateUserName = (name) => {
+//         if (name.length > this.DEFAULT_NAME_LENGTH) {
+//             throw new Error('Invalid name')
+//         }
+//     }
+//
+//     constructor(name) {
+//         Test.validateUserName(name)
+//         this.name = name
+//     }
+// }
 
-class Test {
-    static DEFAULT_NAME_LENGTH = 20
-    static validateUserName = (name) => {
-        if (name.length > this.DEFAULT_NAME_LENGTH) {
-            throw new Error('Invalid name')
-        }
-    }
+//Private field
+class User {
+    #name;
 
     constructor(name) {
-        Test.validateUserName(name)
-        this.name = name
+        this.#name = name
+    }
+
+    getName() {
+        return this.#name
     }
 }
+
+const alex = new User('Alex')
+console.log(alex.getName())
+
+
+
+
+
+
+
+
+
+
 
