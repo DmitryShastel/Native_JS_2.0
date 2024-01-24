@@ -256,23 +256,67 @@ function Person(pName, pAge) {
 // console.log(result2); // 12
 
 let One = {name: 'One'};
-let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
+let Two = {
+    name: 'Two', sayHello: function () {
+        console.log(`Hello, my name is ${this.name}`)
+    }
+};
 
-let result = Two.sayHello.bind(One)
+// let result = Two.sayHello.bind(One)
+//
+// let helperObj = {
+//     name: '',
+//     age: 0,
+//     changeName(newName) {
+//         return this.name = newName
+//     },
+//     setAge(newAge) {
+//         return this.age = newAge
+//     },
+//     greeting() {
+//         return console.log(`Hello, my name is ${this.name}`)
+//     },
+// }
+//
+// let helperName = helperObj.changeName('Dima2')
+// let obj = {
+//     name: 'Dima',
+//     sayHi(a, b, c) {
+//         console.log('My name is ', this.name, a, b, c)
+//     }
+// }
+//
+// let obj2 = {
+//     name: 'Julia',
+// }
+//
+// let obj3 = {
+//     name: 'Alex',
+// }
+// obj2.sayHi = obj.sayHi.bind(obj, 10, 20, 100)
+// obj2.sayHi(50)
+//
+// obj.sayHi.bind(obj3, 50).bind(obj, 100).bind(obj2, 250).bind(obj2, 300)
 
-let helperObj = {
-    name: '',
-    age: 0,
-    changeName(newName){
-        return this.name = newName
-    },
-    setAge(newAge){
-        return this.age = newAge
-    },
-    greeting(){
-        return console.log(`Hello, my name is ${this.name}`)
-    },
+
+//CLASS
+class User {
+
+    age = 23
+    someFunc = () => {}
+    someFunc2 = function(){}
+
+    constructor(name) {
+        this.name = name
+    }
+    sayHi(){
+        console.log(this.name)
+    }
 }
 
-let helperName = helperObj.changeName('Dima2')
-console.log(helperName)
+const user = new User('Alex')
+console.log(user)
+
+
+
+
