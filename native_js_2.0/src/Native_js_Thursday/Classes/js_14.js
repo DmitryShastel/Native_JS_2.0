@@ -337,23 +337,62 @@ let Two = {
 // }
 
 //Private field
-class User {
-    #name;
+// class User {
+//     #name;
+//
+//     constructor(name) {
+//         this.#name = name
+//     }
+//
+//     getName() {
+//         return this.#name
+//     }
+// }
+//
+// const alex = new User('Alex')
+// console.log(alex.getName())
 
-    constructor(name) {
-        this.#name = name
-    }
 
-    getName() {
-        return this.#name
+//GET, SET
+// class User {
+//     static DEFAULT_NAME_LENGTH = 20
+//     #name;
+//
+//     constructor(name) {
+//         this.#name = name
+//     }
+//
+//     get name() {
+//         return this.#name
+//     }
+//
+//     set name(value) {
+//         if (value.length > User.DEFAULT_NAME_LENGTH) throw new Error('Invalid name')
+//         return this.#name = value
+//     }
+//
+//
+// }
+//
+// const alex = new User('Alex')
+// console.log(alex.name)
+// console.log(alex.name = 'test')
+
+//Extends
+class Car {
+    static WHEELS_COUNT = 4
+    run() {
+        console.log('Car running')
     }
 }
 
-const alex = new User('Alex')
-console.log(alex.getName())
-
-
-
+class Ford extends Car {
+    fordRun() {
+        console.log('Ford running')
+    }
+}
+const car = new Ford
+console.log(Ford.WHEELS_COUNT)
 
 
 
