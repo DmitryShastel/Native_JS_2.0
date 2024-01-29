@@ -321,7 +321,7 @@ let Two = {
 // const user = new User('Alex')
 // console.log(user)
 
-//static methods of class
+//static methods of classs
 // class Test {
 //     static DEFAULT_NAME_LENGTH = 20
 //     static validateUserName = (name) => {
@@ -352,7 +352,6 @@ let Two = {
 // const alex = new User('Alex')
 // console.log(alex.getName())
 
-
 //GET, SET
 // class User {
 //     static DEFAULT_NAME_LENGTH = 20
@@ -379,25 +378,70 @@ let Two = {
 // console.log(alex.name = 'test')
 
 //Extends
-class Car {
-    static WHEELS_COUNT = 4
-    run() {
-        console.log('Car running')
+// class Car {
+//     static WHEELS_COUNT = 4
+//     run() {
+//         console.log('Car running')
+//     }
+// }
+//
+// class Ford extends Car {
+//     fordRun() {
+//         console.log('Ford running')
+//     }
+// }
+// const car = new Ford
+// console.log(Ford.WHEELS_COUNT)
+
+//Super
+// class Car {
+//     constructor(model) {
+//         this.model = model
+//     }
+// }
+//
+// class Ford extends Car{
+//     constructor(model) {
+//         super(model);
+//     }
+//
+// }
+//
+// const ford = new Ford('max')
+// console.log(ford)
+
+class Clock {
+    constructor() {
+        this.count()
     }
+
+    count() {
+        let date = new Date();
+
+        let h = date.getHours();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+        m = this.checkTime(m);
+        s = this.checkTime(s);
+
+        console.log(h + ':' + m + ':' + s)
+
+        setTimeout(this.count.bind(this), 1000)
+
+    }
+
+    checkTime(i) {
+        if (i < 10) {
+            i = '0' + i
+            return i;
+        }
+    }
+
+
 }
 
-class Ford extends Car {
-    fordRun() {
-        console.log('Ford running')
-    }
-}
-const car = new Ford
-console.log(Ford.WHEELS_COUNT)
-
-
-
-
-
+const clock = new Clock()
+console.log(clock)
 
 
 
