@@ -410,38 +410,58 @@ let Two = {
 // const ford = new Ford('max')
 // console.log(ford)
 
-class Clock {
-    constructor() {
-        this.count()
+// class Clock {
+//     constructor() {
+//         this.count()
+//     }
+//
+//     count() {
+//         let date = new Date();
+//
+//         let h = date.getHours();
+//         let m = date.getMinutes();
+//         let s = date.getSeconds();
+//         m = this.checkTime(m);
+//         s = this.checkTime(s);
+//
+//         console.log(h + ':' + m + ':' + s)
+//
+//         setTimeout(this.count.bind(this), 1000)
+//
+//     }
+//
+//     checkTime(i) {
+//         if (i < 10) {
+//             i = '0' + i
+//             return i;
+//         }
+//     }
+// }
+
+// const clock = new Clock()
+// console.log(clock)
+
+class CoffeeMachine {
+    _waterAmount = 0;
+
+    set waterAmount(value) {
+        if (value < 0) throw new Error('Negative amount of water')
+        this._waterAmount = value
     }
 
-    count() {
-        let date = new Date();
-
-        let h = date.getHours();
-        let m = date.getMinutes();
-        let s = date.getSeconds();
-        m = this.checkTime(m);
-        s = this.checkTime(s);
-
-        console.log(h + ':' + m + ':' + s)
-
-        setTimeout(this.count.bind(this), 1000)
-
+    get waterAmount() {
+        return this._waterAmount;
     }
 
-    checkTime(i) {
-        if (i < 10) {
-            i = '0' + i
-            return i;
-        }
+    constructor(power) {
+        this._power = power
     }
-
-
 }
 
-const clock = new Clock()
-console.log(clock)
+let coffeeMachine = new CoffeeMachine(100);
+coffeeMachine.waterAmount = 10
+
+console.log(coffeeMachine)
 
 
 
