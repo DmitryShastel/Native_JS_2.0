@@ -441,27 +441,37 @@ let Two = {
 // const clock = new Clock()
 // console.log(clock)
 
-class CoffeeMachine {
-    _waterAmount = 0;
+// class CoffeeMachine {
+//     _waterAmount = 0;
+//
+//     set waterAmount(value) {
+//         if (value < 0) throw new Error('Negative amount of water')
+//         this._waterAmount = value
+//     }
+//
+//     get waterAmount() {
+//         return this._waterAmount;
+//     }
+//
+//     constructor(power) {
+//         this._power = power
+//     }
+// }
+//
+// let coffeeMachine = new CoffeeMachine(100);
+// coffeeMachine.waterAmount = 10
+//
+// console.log(coffeeMachine)
 
-    set waterAmount(value) {
-        if (value < 0) throw new Error('Negative amount of water')
-        this._waterAmount = value
-    }
-
-    get waterAmount() {
-        return this._waterAmount;
-    }
-
-    constructor(power) {
-        this._power = power
+class Task {
+    constructor(title = '', isCompleted = false) {
+        this.tile = title
+        this.isCompleted = isCompleted
     }
 }
 
-let coffeeMachine = new CoffeeMachine(100);
-coffeeMachine.waterAmount = 10
-
-console.log(coffeeMachine)
+let task = new Task('react', true)
+console.log(task)
 
 
 
