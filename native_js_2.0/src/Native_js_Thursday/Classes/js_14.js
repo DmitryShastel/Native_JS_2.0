@@ -516,6 +516,11 @@ class Student {
         this.groupNumber = groupNumber
         this.grade = grade
     }
+
+    get averageGrade() {
+        const sum = this.grade.reduce((total, grate) => total + grate, 0)
+        return sum / this.grade.length
+    }
 }
 
 const students = [
@@ -523,10 +528,16 @@ const students = [
     new Student('Bob', 'Smith', 20, 2, [5, 5, 5, 5, 5]),
     new Student('Kate', 'Smith', 23, 4, [4, 5, 3, 3, 3]),
     new Student('Dima', 'Smith', 19, 2, [3, 3, 3, 2, 2]),
-    new Student('Vasa', 'Smith', 18, 5, [4, 4, 3, 3, 3]),
+    new Student('Vasa', 'Smith', 18, 5, [4, 4, 4, 4, 4]),
 ]
+students.sort((a, b) => a.averageGrade - b.averageGrade)
+let filteredStudents = students.filter(student => student.grade.every(grade => grade === 4 || grade === 5))
 
+filteredStudents.forEach(student => {
+    console.log(`Фамилия: ${student.firstName}, Группа: ${student.groupNumber}`);
+});
 console.log(students)
+console.log(filteredStudents)
 
 
 
