@@ -473,35 +473,60 @@ let Two = {
 // let task = new Task('react', true)
 // console.log(task)
 
+//
+// class Animal {
+//     constructor(options) {
+//         this.name = options.name
+//         this.age = options.age
+//         this.hasTail = options.hasTail
+//     }
+//
+//     voice() {
+//         console.log('voice')
+//     }
+// }
+//
+// class Cat extends Animal {
+//     constructor(options) {
+//         super(options);
+//         this.color = options.color
+//     }
+//
+//     voice() {
+//         super.voice()
+//         console.log('I am cat')
+//     }
+// }
+//
+// const cat = new Cat({
+//     name: 'cat',
+//     age: 5,
+//     hasTail: true,
+//     color: 'black'
+// })
 
-class Animal {
-    constructor(options) {
-        this.name = options.name
-        this.age = options.age
-        this.hasTail = options.hasTail
-    }
+// console.log(cat.voice())
 
-    voice() {
-        console.log('voice')
+
+class Student {
+    constructor(firstName, lastName, age, groupNumber, grade) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.age = age
+        this.groupNumber = groupNumber
+        this.grade = grade
     }
 }
 
-class Cat extends Animal {
-    constructor(options) {
-        super(options);
-        this.color = options.color
-    }
-}
+const students = [
+    new Student('Alex', 'Smith', 22, 1, [4, 5, 3, 2, 2]),
+    new Student('Bob', 'Smith', 20, 2, [5, 5, 5, 5, 5]),
+    new Student('Kate', 'Smith', 23, 4, [4, 5, 3, 3, 3]),
+    new Student('Dima', 'Smith', 19, 2, [3, 3, 3, 2, 2]),
+    new Student('Vasa', 'Smith', 18, 5, [4, 4, 3, 3, 3]),
+]
 
-const cat = new Cat({
-    name: 'cat',
-    age: 5,
-    hasTail: true,
-    color: 'black'
-})
-
-console.log(cat)
-
+console.log(students)
 
 
 
