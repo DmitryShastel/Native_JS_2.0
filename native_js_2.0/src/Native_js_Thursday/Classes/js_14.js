@@ -463,15 +463,79 @@ let Two = {
 //
 // console.log(coffeeMachine)
 
-class Task {
-    constructor(title = '', isCompleted = false) {
-        this.tile = title
-        this.isCompleted = isCompleted
+// class Task {
+//     constructor(title = '', isCompleted = false) {
+//         this.tile = title
+//         this.isCompleted = isCompleted
+//     }
+// }
+//
+// let task = new Task('react', true)
+// console.log(task)
+
+
+class Animal {
+    constructor(options) {
+        this.name = options.name
+        this.age = options.age
+        this.hasTail = options.hasTail
+    }
+
+    voice() {
+        console.log('voice')
     }
 }
 
-let task = new Task('react', true)
-console.log(task)
+class Cat extends Animal {
+    constructor(options) {
+        super(options);
+        this.color = options.color
+    }
+}
+
+const cat = new Cat({
+    name: 'cat',
+    age: 5,
+    hasTail: true,
+    color: 'black'
+})
+
+console.log(cat)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
